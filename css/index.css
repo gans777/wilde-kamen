@@ -1,0 +1,9 @@
+/* главная страница */
+body {
+	display: flex;
+	justify-content: center;
+}
+.container {
+ max-width: 800px;
+ border:1px solid brown;
+}
