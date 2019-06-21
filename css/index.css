@@ -6,4 +6,5 @@ body {
 .container {
  max-width: 800px;
  border:1px solid brown;
+ margin: 20px;
 }

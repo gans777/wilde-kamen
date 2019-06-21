@@ -14,13 +14,13 @@ body {
 	padding-top: 20px;
 }
 .header {
-	height: 400px;
+	height: 160px;
 	background-image: url('32.jpeg');
 	 background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: top;
   text-align: center;
-  padding-top: 90px;
+  padding-top: 10px;
 
 }
 .img_this {
@@ -87,4 +87,9 @@ cursor: pointer;
 	border-radius: 20px;
 	background-color:grey;
 	border: 1px solid brown;
+}
+.text_in_modal_for_admin{
+	margin: 8px;
+	color:black;
+	font-size: 1em;
 }

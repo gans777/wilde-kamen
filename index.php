@@ -35,16 +35,31 @@ $dir = "photos";
         $dir_this = $dir."/".$value;
     $scandir_this_value = scandir($dir_this);
     unset($scandir_this_value[0]);
-    unset($scandir_this_value[1]); // проверить есть ли в папке с таким же именем
+    unset($scandir_this_value[1]); 
+
+    // проверяет есть ли в папке с таким же именем тумба
     
     if (!file_exists ("thumbs/".$scandir_this_value[2])) {
-    //echo "name first thumb".$scandir_this_value[2]."<br>";
    $image->load($dir_this."/".$scandir_this_value[2]);
    $image->resizeToWidth(250);
    $image->save("thumbs/".$scandir_this_value[2]);
         }// генерирует тумбу если нет такой же первой в галлерее
 
-       echo "<div><div class=\"uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle\" ><a href='photos/".$value."/index.php'><img src='thumbs/".$scandir_this_value[2]."'></a></div></div>";
+
+// считывает имя галлереи из файла data.txt
+        if (file_exists($dir_this.'/data.txt')){
+      $main_data_from_this_gallery=file_get_contents($dir_this.'/data.txt');
+      
+if ($main_data_from_this_gallery){
+  $mass_main_data_from_this_gallery= explode('||',$main_data_from_this_gallery);
+  
+
+} else { //echo "файла с основными данными нет";
+}
+$gal_name=$mass_main_data_from_this_gallery[0];
+} else { $gal_name="";}
+
+       echo "<div><div class=\"uk-card uk-card-default uk-flex uk-flex-center uk-flex-middle\" ><a href='photos/".$value."/index.php'><img src='thumbs/".$scandir_this_value[2]."'><div class=\"gal_name\">".$gal_name."</div></a></div></div>";
       }
     ?>
     

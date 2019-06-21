@@ -8,9 +8,6 @@ if ($main_data){
 } else { echo "файла с основными данными нет";}
 
 
-
-
-
 ?> 
 
 <!DOCTYPE html>
@@ -23,6 +20,9 @@ if ($main_data){
     <title><?php echo $mass_main_data[0]; ?></title>
 
     <!-- Bootstrap -->
+     <link rel="stylesheet" href="../../css/uikit.min.css" />
+        <script src="../../js/uikit.min.js"></script>
+        <script src="../../js/uikit-icons.min.js"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/f_awesome/css/font-awesome.min.css">
     <link href="../../css/galery.css?rnd=123" rel="stylesheet">
@@ -40,7 +40,24 @@ if ($main_data){
   <body>
     
     <div class="header">
+   <nav class="uk-navbar-container uk-margin" uk-navbar>
+    <div class="uk-navbar-left">
+
+        <a class="uk-navbar-item uk-logo" href="/">Logo</a>
+
       
+
+        <div class="uk-navbar-item">
+            
+        </div>
+
+        <div class="uk-navbar-item">
+            
+        </div>
+
+    </div>
+</nav>
+
     <h1><?php echo $mass_main_data[0]; ?> </h1>
     </div>
     <div class="container">
@@ -53,8 +70,26 @@ if ($main_data){
         echo "<div class=\"button_for_main_info\">save</div>";
         echo "</div>
       </div>";
-}
-      
+
+// переименование изображения
+        $dir = __DIR__;
+    $scandir = scandir($dir);
+    unset($scandir[0]);
+    unset($scandir[1]);
+   //echo print_r($scandir);
+     $count=0;
+    foreach ( $scandir as $value ) {
+        $count++;
+         count($value);
+         if ((".php"=== substr($value, -4))||(".txt"=== substr($value, -4))||(".gif"===substr($value, -4))) { continue;}
+       echo "
+        <div class=\"admin_edit_img\">
+        <button class=\"uk-button uk-button-primary rename\">переименовать название изображения</button><br>
+       <img class=\"img_this\" src=\"$value\" width=\"400\"><br>$count<br><br>
+       </div>";
+        }
+
+} else {  
 
 
     $dir = __DIR__;
@@ -66,10 +101,11 @@ if ($main_data){
     foreach ( $scandir as $value ) {
         $count++;
          count($value);
-         if ((".php"=== substr($value, -4))||(".txt"=== substr($value, -4))) { continue;}
+         if ((".php"=== substr($value, -4))||(".txt"=== substr($value, -4))||(".gif"===substr($value, -4))) { continue;}
        echo "<img class='img_this' src='$value' width='400'><br>$count<br><br>";
        
         }
+      }
     ?>
    
   </div>
